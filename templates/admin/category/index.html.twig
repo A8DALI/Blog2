@@ -1,10 +1,11 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <h1>Gestion Catégories</h1>
+    <h1>Gestion catégories</h1>
+
     <a href="{{ path('app_admin_category_edit') }}"
        class="btn btn-outline-primary mb-3">
-        Ajouter une Catégories
+        Ajouter une catégorie
     </a>
 
     <table class="table table-striped">
@@ -33,7 +34,6 @@
         {% endfor %}
     </table>
 
-    <!-- Modal JS-->
     <div class="modal fade" id="modal_delete" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -53,7 +53,12 @@
 {% endblock %}
 
 {% block javascripts %}
+    {# pour garder le contenu du bloc javascripts de base.html.twig #}
     {{ parent() }}
 
+    {# asset() pour créer le chemin vers la racine web du site qui correspond à celle du répertoire public #}
     <script src="{{ asset('js/admin_category.js') }}"></script>
 {% endblock %}
+
+
+

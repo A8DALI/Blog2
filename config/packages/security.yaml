@@ -1,10 +1,14 @@
 security:
+    # comment le mot de passe est encrypté pour l'entité User
     encoders:
         App\Entity\User:
+            # défini par le framework
             algorithm: auto
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
+        # les utilisateurs viennent de l'entité User
+        # et l'identifiant est l'email
         database:
             entity:
                 class: App\Entity\User
@@ -15,14 +19,18 @@ security:
             security: false
         main:
             anonymous: lazy
+            # le fournisseur d'utilisateur défini dans providers
             provider: database
 
+            # route de la page qui contient le formulaire de connexion
             form_login:
                 login_path: app_user_login
                 check_path: app_user_login
 
+            # route de la page de déconnexion
             logout:
                 path: app_user_logout
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -33,5 +41,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # il faut avoir le rôle ROLE_ADMIN pour accéder aux pages
+        # dont l'url commence par /admin
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profil, roles: ROLE_USER }

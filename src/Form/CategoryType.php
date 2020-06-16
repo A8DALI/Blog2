@@ -15,23 +15,31 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add(
-            	'name',
-				TextType::class,
-				[
-					'label' => 'Nom',
-					'attr' => [
-						'placeholder' => 'nom de la catégorie'
-					]
-				]
-			)
+                // nom du champ de formulaire correspondant
+                // au nom de l'attribut dans l'entité Category
+                'name',
+                // input type text
+                TextType::class,
+                // tableau d'options
+                [
+                    // libellé custom pour le champ de formulaire
+                    'label' => 'Nom',
+                    // pour ajouter des attributs à la balise input
+                    'attr' => [
+                        'placeholder' => 'Nom de la catégorie'
+                    ]
+
+                ]
+            )
             ->add(
-            	'description',
-				TextareaType::class,
-				[
-					'label' => 'Description',
-					'required' => false
-				]
-			)
+                'description',
+                TextareaType::class,
+                [
+                    'label' => 'Description',
+                    // par défaut, les champs de formulaire ont l'attribut required
+                    'required' => false
+                ]
+            )
         ;
     }
 

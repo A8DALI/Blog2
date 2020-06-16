@@ -17,40 +17,47 @@ class RegistrationType extends AbstractType
     {
         $builder
             ->add(
-            	'lastname',
-				TextType::class,
-				[
-					'label' => 'Nom'
-				]
-			)
+                'lastname',
+                TextType::class,
+                [
+                    'label' => 'Nom'
+                ]
+            )
             ->add(
-            	'firstname',
-				TextType::class,
-				[
-					'label' => 'Prénom'
-				]
-			)
-            ->add('email',
-				EmailType::class,
-				[
-					'label' => 'Email'
-				]
-			)
+                'firstname',
+                TextType::class,
+                [
+                    'label' => 'Prénom'
+                ]
+            )
             ->add(
-            	'plainPassword',
-				RepeatedType::class,
-				[
-					'type' => PasswordType::class,
-					'first_options' => [
-						'label' => 'Mot de passe',
-						'help' => 'correction...'
-					],
-					'second_options' => [
-						'label' => 'Confirmation du mot de passe'
-					],
-					'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
-				]
-			)
+                'email',
+                EmailType::class,
+                [
+                    'label' => 'Email'
+                ]
+            )
+            ->add(
+                'plainPassword',
+                // 2 champs qui doivent avoir la même valeur
+                RepeatedType::class,
+                [
+                    // ...input type password
+                    'type' => PasswordType::class,
+                    // options du 1er des 2 champs
+                    'first_options' => [
+                        'label' => 'Mot de passe',
+                        'help' => 'Le mot de passe ne doit contenir que des lettres, des chiffres ou _'
+                            . ' et faire entre 6 et 20 caractères'
+                    ],
+                    // options du 2nd champ
+                    'second_options' => [
+                        'label' => 'Confirmation du mot de passe'
+                    ],
+                    // message d'erreur si les 2 champs n'ont pas la même valeur
+                    'invalid_message' => 'La confirmation ne correspond pas au mot de passe'
+                ]
+            )
         ;
     }
 

@@ -5,6 +5,8 @@ controllers:
 admin_controllers:
     resource: ../../src/Controller/Admin/
     type: annotation
+    # toutes les url des routes définies dans src/Controller/Admin
+    # commencent par /admin
     prefix: /admin
 
 kernel:

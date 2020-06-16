@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Edition Catégorie</h1>
+    <h1>Edition catégorie</h1>
 
+    {# ouverture de la balise form #}
     {{ form_start(form) }}
 
+    {# champs de formulaire avec leurs labels #}
     {{ form_row(form.name) }}
     {{ form_row(form.description) }}
 
@@ -13,13 +15,12 @@
             Enregistrer
         </button>
         <a href="{{ path('app_admin_category_index') }}"
-        class="btn btn-outline-secondary">
+           class="btn btn-outline-secondary">
             Retour
         </a>
     </div>
 
+    {# fermeture de la balise form #}
     {{ form_end(form) }}
-
-
 {% endblock %}
 
